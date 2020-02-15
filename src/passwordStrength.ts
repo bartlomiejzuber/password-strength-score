@@ -9,13 +9,11 @@ export interface PasswordStrengthOptions {
 
 const defaultOptions = {
   isLong: 6,
-  isVeryLong: 9,
+  isVeryLong: 12,
   withoutUppercase: false,
   withoutLowercase: false,
   withoutNumbers: false,
-  withoutNonalphanumerics: false,
-  gradientColor1: '',
-  gradientColor2: '',
+  withoutNonalphanumerics: false
 };
 
 export const passwordStrength = (password?: string, options?: PasswordStrengthOptions) => {
