@@ -1,92 +1,68 @@
-## use-open-window
+## password-strength-score
 
-[![npm](https://img.shields.io/npm/l/hooked-react-stopwatch.svg)](https://www.npmjs.com/package/use-open-window)
-[![npm](https://img.shields.io/bundlephobia/min/use-open-window)](https://www.npmjs.com/package/use-open-window)
-[![Coverage Status](https://coveralls.io/repos/github/bartlomiejzuber/use-open-window/badge.svg)](https://coveralls.io/github/bartlomiejzuber/use-open-window)
-[![Build Status](https://travis-ci.org/bartlomiejzuber/use-open-window.svg?branch=master)](https://travis-ci.org/bartlomiejzuber/use-open-window)
-[![License](https://img.shields.io/npm/v/use-open-window.svg)](https://github.com/bartlomiejzuber/use-open-window/blob/master/LICENSE)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/687ea567-73f1-43ad-98c8-18c33994a609/deploy-status)](https://app.netlify.com/sites/hooked-react-stopwatch/deploys)
+[![npm](https://img.shields.io/npm/l/hooked-react-stopwatch.svg)](https://www.npmjs.com/package/password-strength-score)
+[![npm](https://img.shields.io/bundlephobia/min/use-open-window)](https://www.npmjs.com/package/password-strength-score)
+[![Coverage Status](https://coveralls.io/repos/github/bartlomiejzuber/password-strength-score/badge.svg)](https://coveralls.io/github/bartlomiejzuber/password-strength-score)
+[![Build Status](https://travis-ci.org/bartlomiejzuber/password-strength-score.svg?branch=master)](https://travis-ci.org/bartlomiejzuber/password-strength-score)
+[![License](https://img.shields.io/npm/v/password-strength-score.svg)](https://github.com/bartlomiejzuber/password-strength-score/blob/master/LICENSE)
+
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bartlomiejzuber/use-open-window/master/assets/icon.png" alt="hook icon"/>
+  <img src="https://raw.githubusercontent.com/bartlomiejzuber/password-strength-score/master/assets/icon.png" alt="hook icon"/>
 </p>
 
-Useful & super tiny (:heart:obvious dep on React only) hook to open links in new window.
+Smallish password strength utility.
 
 ## Installation
 
 ```sh
-npm i use-open-window --save
+npm i password-strength-score --save
 ```
 
 Alternatively you may use `yarn`:
 
 ```sh
-yarn add use-open-window
+yarn add password-strength-score
 ```
 
 Link to npm:
-[https://www.npmjs.com/package/use-open-window](https://www.npmjs.com/package/use-open-window)
+[https://www.npmjs.com/package/password-strength-score](https://www.npmjs.com/package/password-strength-score)
 
 ## Usage
 
 ```javascript
 import React from 'react';
-import { useOpenInWindow }  from 'use-open-window';
+import { passwordStrength } from 'password-strength-score';
 
-const url = 'https://www.google.com/';
-const options = {
-   centered: true, /* default */
-   spec: {
-      width: 800, /* window width */
-      height: 600, /* window height */
-   }
-};
-const App = () => {
-  const [handleWindowOpen, newWindowHandle] = useOpenInWindow(url);
-  
-  return (
-    <div className="App">
-      <div onClick={handleWindowOpen}>Click me</div>
-    </div>
-  );
-}
-
-export default App;
+const password = 'password';
+passwordStrength(password); // returns score = 1
 ```
 
-### Hook params
+### Score calculation (default settings)
 
-| Parameter | Type                   | Description                                             | Required |
-|-----------|------------------------|---------------------------------------------------------|----------|
-| url       | string                 | Url to load inside new window                           | Y        |
-| options   | UseOpenInWindowOptions | Set of hook options (centered, focus, window size etc.) | N        |
+| Flag         | Test                 | Points |
+| ------------ | -------------------- | ------ |
+| isLong       | password.length > 6  | 1      |
+| isVeryLong   | password.length > 12 | 1      |
+| hasUppercase | /[a-z]/              | 1      |
+| hasLowercase | /[A-Z]/              | 1      |
+| hasNumbers   | /\d/                 | 1      |
+| hasNonalphas | /\W/                 | 1      |
 
 #### Options
 
-| Option       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Default   |
-|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| name         | Specifies the target attribute or the name of the window. The following values are supported:<br><br>        _blank - URL is loaded into a new window, or tab.<br><br>        _parent - URL is loaded into the parent frame<br><br>        _self - URL replaces the current page<br><br>        _top - URL replaces any framesets that may be loaded<br><br>        name - The name of the window (Note: the name does not specify the title of the new window) | _blank    |
-| centered     | Specifies if window should be centered                                                                                                                                                                                                                                                                                                                                                                                                                          | true      |
-| focus        | Puts new window in focus                                                                                                                                                                                                                                                                                                                                                                                                                                        | true      |
-| specs.width  | The height of the window. Min. value is 100 (browser restriction).                                                                                                                                                                                                                                                                                                                                                                                              | 800       |
-| specs.height | The width of the window. Min. value is 100 (browser restriction).                                                                                                                                                                                                                                                                                                                                                                                               | 800       |
-| left         | The left position of the window. Negative values not allowed.                                                                                                                                                                                                                                                                                                                                                                                                   | undefined |
-| top          | The top position of the window. Negative values not allowed.                                                                                                                                                                                                                                                                                                                                                                                                    | undefined |
-| channelmode  | Whether or not to display the window in theater mode. IE only                                                                                                                                                                                                                                                                                                                                                                                                   | 'no'      |
-| fullscreen   | Whether or not to display the browser in full-screen mode. A window in full-screen mode must also be in theater mode. IE only.                                                                                                                                                                                                                                                                                                                                  | 'no'      |
-| location     | Whether or not to display the address field. Opera only.                                                                                                                                                                                                                                                                                                                                                                                                        | null      |
-| menubar      | Whether or not to display the menu bar.                                                                                                                                                                                                                                                                                                                                                                                                                         | null      |
-| resizable    | Whether or not the window is resizable. IE only.                                                                                                                                                                                                                                                                                                                                                                                                                | null      |
-| scrollbars   | Whether or not to display scroll bars. IE, Firefox & Opera only.                                                                                                                                                                                                                                                                                                                                                                                                | null      |
-| status       | Whether or not to add a status bar                                                                                                                                                                                                                                                                                                                                                                                                                              | null      |
-| titlebar     | Whether or not to display the title bar. Ignored unless the calling application is an HTML Application or a trusted dialog box.                                                                                                                                                                                                                                                                                                                                 | null      |
-| toolbar      | Whether or not to display the browser toolbar. IE and Firefox only.                                                                                                                                                                                                                                                                                                                                                                                             | null      |
+| Option                  | Description                                            | Default |
+| ----------------------- | ------------------------------------------------------ | ------- |
+| isLong                  | Length for password considered as long                 | 6       |
+| isVeryLong              | Length for password considered as very long            | 12      |
+| withoutUppercase        | Turn off score point for uppercase char occurrence     | false   |
+| withoutLowercase        | Turn off score point for lowercase char occurrence     | false   |
+| withoutNumbers          | Turn off score point for numbers occurrence            | false   |
+| withoutNonalphanumerics | Turn off score point for alphanumerics char occurrence | false   | 
 
-Reliability
---------
-This package is fully tested with total coverage set to [![Coverage Status](https://coveralls.io/repos/github/bartlomiejzuber/use-open-window/badge.svg)](https://coveralls.io/github/bartlomiejzuber/use-open-window). If you found any issue please report it [here](https://github.com/bartlomiejzuber/use-open-window/issues/new).
+## Reliability
 
-License
---------
+This package is fully tested with total coverage set to [![Coverage Status](https://coveralls.io/repos/github/bartlomiejzuber/password-strength-score/badge.svg)](https://coveralls.io/github/bartlomiejzuber/use-open-window). If you found any issue please report it [here](https://github.com/bartlomiejzuber/password-strength-score/issues/new).
+
+## License
 
 Made with :sparkling_heart: by [Bartlomiej Zuber (bartlomiej.zuber@outlook.com)](mailto:bartlomiej.zuber@outlook.com) while traveling around the world, and licensed under the [MIT License](LICENSE)
