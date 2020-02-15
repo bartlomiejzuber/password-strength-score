@@ -1,7 +1,7 @@
 {
   "name": "password-strength-score",
   "version": "1.0.2",
-  "description": "Fancy React hook for open links in windows",
+  "description": "Password strength score checker",
   "main": "dist/index.js",
   "scripts": {
     "check-types": "tsc --noEmit",
