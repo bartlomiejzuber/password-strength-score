@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/npm/v/password-strength-score.svg)](https://github.com/bartlomiejzuber/password-strength-score/blob/master/LICENSE)
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/bartlomiejzuber/password-strength-score/master/assets/icon.png" alt="hook icon"/>
+  <img src="https://raw.githubusercontent.com/bartlomiejzuber/password-strength-score/master/assets/icon2.png" alt="hook icon"/>
 </p>
 
 Smallish password strength utility.
