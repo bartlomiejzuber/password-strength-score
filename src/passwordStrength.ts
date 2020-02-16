@@ -7,6 +7,10 @@ export interface PasswordStrengthOptions {
   withoutNonalphanumeric?: boolean;
 }
 
+export const enum PasswordStrength {
+  MaxScore = 6
+}
+
 const defaultOptions = {
   isLong: 6,
   isVeryLong: 12,
