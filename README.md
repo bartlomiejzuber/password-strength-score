@@ -52,12 +52,12 @@ passwordStrength(password); // returns score = 1
 
 | Option                  | Description                                            | Default |
 | ----------------------- | ------------------------------------------------------ | ------- |
-| isLong                  | Length for password considered as long                 | 6       |
-| isVeryLong              | Length for password considered as very long            | 12      |
+| isLong                  | Length for password to be consider as long             | 6       |
+| isVeryLong              | Length for password to be consider as very long        | 12      |
 | withoutUppercase        | Turn off score point for uppercase char occurrence     | false   |
 | withoutLowercase        | Turn off score point for lowercase char occurrence     | false   |
 | withoutNumbers          | Turn off score point for numbers occurrence            | false   |
-| withoutNonalphanumerics | Turn off score point for alphanumerics char occurrence | false   | 
+| withoutNonalphanumerics | Turn off score point for alphanumerics char occurrence | false   |
 
 ## Reliability
 

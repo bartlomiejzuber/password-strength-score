@@ -2,7 +2,6 @@
 	"compilerOptions": {
 		"module": "commonjs",
 		"target": "esnext",
-		"jsx": "react",
 		"noImplicitAny": true,
 		"strictNullChecks": true,
 		"preserveConstEnums": true,
@@ -10,7 +9,7 @@
 		"esModuleInterop": true,
 		"importHelpers": true,
 		"outDir": "dist/",
-		"types": ["react", "jest"]
+		"types": ["jest"]
 	},
 	"include": ["src/**/*"],
 	"exclude": [
