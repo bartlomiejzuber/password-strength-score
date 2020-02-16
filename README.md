@@ -29,12 +29,28 @@ Link to npm:
 
 ## Usage
 
+Basic
 ```javascript
-import React from 'react';
 import { passwordStrength } from 'password-strength-score';
 
-const password = 'password';
-passwordStrength(password); // returns score = 1
+passwordStrength('pass'); // returns 1 because password has only lowercase chars
+passwordStrength('pass1'); // returns 2 because password has lowercase chars and a number
+```
+
+Strength meter component utility
+```javascript
+import { passwordStrength, PasswordStrength } from 'password-strength-score';
+import chroma from 'chroma-js';
+
+const getPasswordScoreGradientColor = (password) => {
+  const score = passwordStrength(password);
+  chroma
+    .scale(['#FF4047','#00FF6E'])
+    .mode('rgb')
+    .colors(PasswordStrength.MaxScore); // generate colors array between #FF4047 - #00FF6E
+  
+  return colors[score]; // Returns one color between #FF4047 - #00FF6E
+};
 ```
 
 ### Score calculation (default settings)
