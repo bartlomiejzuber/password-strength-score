@@ -10,7 +10,7 @@
   <img src="https://raw.githubusercontent.com/bartlomiejzuber/password-strength-score/master/assets/icon2.png" alt="hook icon"/>
 </p>
 
-Smallish password strength utility.
+Smallish password strength utility, 0️⃣ external dependencies. Self code only.
 
 ## Installation
 
